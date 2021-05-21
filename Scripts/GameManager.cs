@@ -7,102 +7,75 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public TextMeshProUGUI titleText;
-    public TextMeshProUGUI healthText;
-    public TextMeshProUGUI waveText;
-    public TextMeshProUGUI gameOverText;
-    public Button startButton;
-    public Button restartButton;
-    public PlayerController playerControl;
-    public EnemyManager enemyManager;
-    public GameObject enemyPrefab;
+    public GameObject player;
 
-    private float spawnRange = 14f;
-    
-    private int enemyCount;
-    private int waveNumber = 0;
-    private int wave;
+    private UI_Script uiScript;
 
-    private bool isGameActive;
+    private bool pauseGame;
 
     
     private void Start()
     {
-        Time.timeScale = 0;
+        uiScript = GameObject.FindWithTag("GameManager").GetComponent<UI_Script>();
+        pauseGame = false;
     }
 
-    public void GameStart()
-    {
-        isGameActive = true;
-        Time.timeScale = 1;
-
-        //activate and deactivate certain UI elements at start of game
-        startButton.gameObject.SetActive(false);
-        titleText.gameObject.SetActive(false);
-        waveText.gameObject.SetActive(true);
-        healthText.gameObject.SetActive(true);
-
-        wave = 0;
-    }
-    
     void Update()
     {
-        if(isGameActive == true)
-        {
-            //When there are no enemies increase enemy- and wave count by 1 for the next wave
-            enemyCount = FindObjectsOfType<EnemyManager>().Length;
 
-            if (enemyCount == 0)
-            {
-                waveNumber++;
-                SpawnEnemyWave(waveNumber);
-                UpdateWave(1);
-            }
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.E))
+        {
+            pauseGame = true;
+            uiScript.PauseMenu();
+        }
+        if (pauseGame == true)
+        {
+            Time.timeScale = 0;
+        }
+        else if (pauseGame == false)
+        {
+            Time.timeScale = 1;
         }
     }
 
-    //Show wave count
-    public void UpdateWave(int waveToAdd)
+    public void PauseMenu()
     {
-        wave += waveToAdd;
-        waveText.text = "Wave: " + wave;
+        pauseGame = true;
+        uiScript.PauseMenu();
     }
 
-    //Game is over
+    public void Victory()
+    {
+        pauseGame = true;
+        uiScript.Victory();
+    }
+
     public void GameOver()
     {
-        gameOverText.gameObject.SetActive(true);
-        restartButton.gameObject.SetActive(true);
-        isGameActive = false;
-        Time.timeScale = 0;
+        player.SetActive(false);
+        pauseGame = true;
+        uiScript.GameOver();
     }
 
-    //Restart the game
-    public void RestartGame()
+    public void NextLevelButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        player.SetActive(true);
+        uiScript.NextLevelButton();
     }
 
-
-    //Calculates how manny enemies are to be spawned
-    public void SpawnEnemyWave(int enemiesToSpawn)
+    public void ContinueButton()
     {
-
-        for (int i = 0; i < enemiesToSpawn; i++)
-        {
-            Instantiate(enemyPrefab, GenerateSpawnPos(), enemyPrefab.transform.rotation);
-
-        }
+        pauseGame = false;
+        uiScript.ContinueButton();
+    }
+    public void RestartButton()
+    {
+        player.SetActive(true);
+        uiScript.RestartButton();
     }
 
-    //Gives an enemy a random position to spawn at
-    private Vector3 GenerateSpawnPos()
+    public void QuitToMenu()
     {
-        float spawnPosX = Random.Range(-spawnRange, spawnRange);
-        float spawnPosZ = Random.Range(-spawnRange, spawnRange);
-
-        Vector3 randomPos = new Vector3(spawnPosX, 0.5f, spawnPosZ);
-
-        return randomPos;
+        uiScript.QuitToMenu();
     }
 }

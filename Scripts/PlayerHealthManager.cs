@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerHealthManager : MonoBehaviour
 {
     private Renderer rend;
-    public GameManager gameManager;
+    private GameManager gameManager;
+    private UI_Script uiScript;
 
     public float flashLength;
     private float flashCounter;
@@ -20,6 +21,8 @@ public class PlayerHealthManager : MonoBehaviour
 
     void Start()
     {
+        uiScript = GameObject.FindWithTag("GameManager").GetComponent<UI_Script>();
+        gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         currentHealth = startingHealth;
         rend = GetComponent<Renderer>();
         storedColor = rend.material.GetColor("_Color");
@@ -27,13 +30,12 @@ public class PlayerHealthManager : MonoBehaviour
     
     void Update()
     {
-        //Game over happens if player health is equal to 0
+        // Game over happens if player health is equal to 0
         if (currentHealth <= 0)
         {
-            gameObject.SetActive(false);
             gameManager.GameOver();
         }
-        //Player color is restored to normal
+        // Player color is restored to normal
         if (flashCounter > 0)
         {
             flashCounter -= Time.deltaTime;
@@ -42,11 +44,10 @@ public class PlayerHealthManager : MonoBehaviour
                 rend.material.SetColor("_Color", storedColor);
             }
         }
-
-        gameManager.healthText.text = "Health: " + currentHealth;
+        uiScript.healthText.text = "Health: " + currentHealth;
     }
 
-    //When player is hurt they lose health and their color turns red
+    // When player is hurt they lose health and their color turns red
     public void HurtPlayer(int damageAmount)
     {
         currentHealth -= damageAmount;
@@ -54,6 +55,7 @@ public class PlayerHealthManager : MonoBehaviour
         rend.material.SetColor("_Color", Color.red);
     }
 
+    // Decrease Health when colliding with damaging walls
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "DamageWall")

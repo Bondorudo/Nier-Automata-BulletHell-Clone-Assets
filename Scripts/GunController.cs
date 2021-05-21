@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour
 {
-    public BulletController bullet;
-    public BulletController bullet2;
+    public BulletController playerBullet;
+    public BulletController enemyBulletNonBreakable;
+    public BulletController enemyBulletBreakable;
     public Transform firePoint;
 
     public float bulletSpeed;
@@ -41,7 +42,7 @@ public class GunController : MonoBehaviour
             if (isFiring && coolDown > coolDownDefault)
             {
 
-                BulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
+                BulletController newBullet = Instantiate(playerBullet, firePoint.position, firePoint.rotation) as BulletController;
                 newBullet.speed = bulletSpeed;
                 coolDown = 0;
             }
@@ -55,13 +56,13 @@ public class GunController : MonoBehaviour
             {
                 if (changeProjectile == true)
                 {
-                    BulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
+                    BulletController newBullet = Instantiate(enemyBulletNonBreakable, firePoint.position, firePoint.rotation) as BulletController;
                     newBullet.speed = bulletSpeed;
                     coolDown = 0;
                 }
                 if (changeProjectile == false)
                 {
-                    BulletController newBullet = Instantiate(bullet2, firePoint.position, firePoint.rotation) as BulletController;
+                    BulletController newBullet = Instantiate(enemyBulletBreakable, firePoint.position, firePoint.rotation) as BulletController;
                     newBullet.speed = bulletSpeed;
                     coolDown = 0;
                 }

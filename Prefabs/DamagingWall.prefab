@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4069446515573393321}
   m_Layer: 0
   m_Name: DamagingWall
-  m_TagString: Untagged
+  m_TagString: DamageWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

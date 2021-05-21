@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class UI_Script : MonoBehaviour
 {
-    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI healthText;
     public TextMeshProUGUI pauseText;
     public Button continueButton;
     public TextMeshProUGUI deathText;

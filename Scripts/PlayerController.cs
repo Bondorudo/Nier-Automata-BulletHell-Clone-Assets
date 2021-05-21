@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody myRigidbody;
     private Camera mainCamera;
-    public GunController theGun;
+    private GunController theGun;
 
     public float moveSpeed;
 
@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     {
         myRigidbody = GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();
+        theGun = GameObject.FindWithTag("Player").GetComponent<GunController>();
     }
 
     // Update is called once per frame
