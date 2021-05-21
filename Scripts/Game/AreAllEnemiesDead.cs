@@ -10,7 +10,6 @@ public class AreAllEnemiesDead : MonoBehaviour
     void Start()
     {
         listOfEnemies.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
-        print(listOfEnemies.Count);
     }
 
     public void DestroyedCondition(GameObject condition)

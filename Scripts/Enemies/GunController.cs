@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour
 {
-    public BulletController enemyBulletNonBreakable;
-    public BulletController enemyBulletBreakable;
+    [SerializeField] private GameObject enemyBulletNonBreakable;
+    [SerializeField] private GameObject enemyBulletBreakable;
     public Transform firePoint;
 
     public int damage = 1;
@@ -46,12 +46,12 @@ public class GunController : MonoBehaviour
         {
             if (changeProjectile == true)
             {
-                Instantiate(enemyBulletNonBreakable, firePoint.position, firePoint.rotation);
+                GameObject.Instantiate(enemyBulletNonBreakable, firePoint.position, firePoint.rotation);
                 coolDown = 0;
             }
             if (changeProjectile == false)
             {
-                Instantiate(enemyBulletBreakable, firePoint.position, firePoint.rotation);
+                GameObject.Instantiate(enemyBulletBreakable, firePoint.position, firePoint.rotation);
                 coolDown = 0;
             }
         }

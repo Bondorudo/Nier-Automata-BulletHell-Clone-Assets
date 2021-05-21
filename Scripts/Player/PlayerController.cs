@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody myRigidbody;
     private Camera mainCamera;
-    [SerializeField] private PlayerBulletController playerBullet;
+    [SerializeField] private GameObject playerBullet;
     [SerializeField] private Transform firePoint;
 
     [SerializeField] private float moveSpeed;
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
     {
         if (coolDown > coolDownDefault)
         {
-            Instantiate(playerBullet, firePoint.position, firePoint.rotation);
+            GameObject.Instantiate(playerBullet, firePoint.position, firePoint.rotation);
             coolDown = 0;
         }
     }

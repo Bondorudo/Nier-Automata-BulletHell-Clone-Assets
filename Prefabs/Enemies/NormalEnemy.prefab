@@ -162,9 +162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68817075b2fc104bb58c66fb59f15dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyBulletNonBreakable: {fileID: 632750245220503400, guid: 29f27136a115a5d4091fd180b9bad5cd,
+  enemyBulletNonBreakable: {fileID: 5753433531923786704, guid: 29f27136a115a5d4091fd180b9bad5cd,
     type: 3}
-  enemyBulletBreakable: {fileID: 6697473867413339652, guid: 9f39e7b38e78dd744860e8f9fa62f0ee,
+  enemyBulletBreakable: {fileID: 4829330669069298905, guid: 9f39e7b38e78dd744860e8f9fa62f0ee,
     type: 3}
   firePoint: {fileID: 6564716440593721120}
   damage: 1
