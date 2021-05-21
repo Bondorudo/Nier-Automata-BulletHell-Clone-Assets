@@ -7,16 +7,33 @@ public class LevelHeart : MonoBehaviour
     private EnemyManager enemyManager;
     private PlayerController thePlayer;
 
+    private Renderer rend;
+
+    private Color storedColor;
+
     // Start is called before the first frame update
     void Start()
     {
         enemyManager = GetComponent<EnemyManager>();
         thePlayer = FindObjectOfType<PlayerController>();
+        rend = GetComponent<Renderer>();
+        storedColor = rend.material.GetColor("_Color");
+        enemyManager.canTakeDamage = false;
+        SetShieldedColor();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CanTakeDamage()
     {
-        
+        enemyManager.canTakeDamage = true;
+    }
+
+    public void SetShieldedColor()
+    {
+        rend.material.SetColor("_Color", Color.gray);
+    }
+
+    public void SetVulnerableColor()
+    {
+        rend.material.SetColor("_Color", storedColor);
     }
 }

@@ -75,6 +75,12 @@ public class BulletController : MonoBehaviour
             collision.gameObject.GetComponent<EnemyManager>().HurtEnemy(damageToGive);
             Destroy(gameObject);
         }
+        // If Player Bullet and Enemy collide deal damage to enemy and destroy bullet
+        if (gameObject.tag == "PlayerBullet" && collision.gameObject.tag == "WinCondition")
+        {
+            collision.gameObject.GetComponent<EnemyManager>().HurtEnemy(damageToGive);
+            Destroy(gameObject);
+        }
         // If Player Bullet and Orange Enemy Bullet collide destroy both bullets
         if (gameObject.tag == "PlayerBullet" && collision.gameObject.tag == "Orange")
         {

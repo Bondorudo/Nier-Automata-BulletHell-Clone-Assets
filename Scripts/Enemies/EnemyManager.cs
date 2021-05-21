@@ -6,6 +6,7 @@ public class EnemyManager : MonoBehaviour
 {
     private Rigidbody enemyRb;
     private PlayerController thePlayer;
+    private AreAllEnemiesDead areEnemiseDead;
     public GameObject enemy;
     private GunController gunController;
 
@@ -16,19 +17,16 @@ public class EnemyManager : MonoBehaviour
     public int health = 3;
     private int currentHealth;
 
+    public bool canTakeDamage = true;
+
 
     void Start()
     {
         enemyRb = GetComponent<Rigidbody>();
         thePlayer = FindObjectOfType<PlayerController>();
         gunController = GetComponent<GunController>();
-
+        areEnemiseDead = GameObject.FindWithTag("GameManager").GetComponent<AreAllEnemiesDead>();
         currentHealth = health;
-    }
-    
-    void Update()
-    {
-
     }
 
     public void Shooting()
@@ -56,12 +54,26 @@ public class EnemyManager : MonoBehaviour
     //Enemy takes damage
     public void HurtEnemy(int damage)
     {
-        currentHealth -= damage;
+        if (canTakeDamage == true)
+        {
+            currentHealth -= damage;
 
+            EnemyDeath();
+        }
+    }
+
+    public void EnemyDeath()
+    {
         //Destroy enemy object when its health is 0
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            areEnemiseDead.DestroyedCondition(gameObject);
+            gameObject.SetActive(false);
         }
+    }
+
+    public int CurrentHealth()
+    {
+        return currentHealth;
     }
 }
