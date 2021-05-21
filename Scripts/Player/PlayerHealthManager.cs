@@ -8,11 +8,12 @@ public class PlayerHealthManager : MonoBehaviour
     private GameManager gameManager;
     private UI_Script uiScript;
 
+
     public float flashLength;
     private float flashCounter;
 
-    public int startingHealth;
-    public int currentHealth;
+    public int startingHealth = 3;
+    private int currentHealth;
 
     private Color storedColor;
 
@@ -24,8 +25,10 @@ public class PlayerHealthManager : MonoBehaviour
         uiScript = GameObject.FindWithTag("GameManager").GetComponent<UI_Script>();
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         currentHealth = startingHealth;
-        rend = GetComponent<Renderer>();
+        rend = GetComponentInChildren<Renderer>();
         storedColor = rend.material.GetColor("_Color");
+        transform.Find("Health_1").gameObject.SetActive(true);
+        transform.Find("Health_2").gameObject.SetActive(true);
     }
     
     void Update()
@@ -34,6 +37,15 @@ public class PlayerHealthManager : MonoBehaviour
         if (currentHealth <= 0)
         {
             gameManager.GameOver();
+        }
+
+        if (currentHealth == 2)
+        {
+            transform.Find("Health_2").gameObject.SetActive(false);
+        }
+        if (currentHealth == 1)
+        {
+            transform.Find("Health_1").gameObject.SetActive(false);
         }
         // Player color is restored to normal
         if (flashCounter > 0)

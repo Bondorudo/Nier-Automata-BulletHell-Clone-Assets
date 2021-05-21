@@ -60,7 +60,7 @@ public class UI_Script : MonoBehaviour
 
     public void QuitToMenu()
     {
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("MainMenu");
     }
 
 }

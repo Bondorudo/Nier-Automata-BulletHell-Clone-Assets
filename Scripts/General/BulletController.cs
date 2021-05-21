@@ -23,7 +23,6 @@ public class BulletController : MonoBehaviour
         // If Bullet hits walls destroy it
         if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "DamageWall")
         {
-            Debug.Log("Coll");
             Destroy(gameObject);
         }
         // If Purple collides with player destroy purple and damage player
@@ -32,10 +31,32 @@ public class BulletController : MonoBehaviour
             collision.gameObject.GetComponent<PlayerHealthManager>().HurtPlayer(damageToGive);
             Destroy(gameObject);
         }
-        // If Orange collides with player destroy purple and damage player
+        // If Orange collides with player destroy orange and damage player
         if (gameObject.tag == "Orange" && collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerHealthManager>().HurtPlayer(damageToGive);
+            Destroy(gameObject);
+        }
+
+        // If Purple collides with player destroy purple
+        if (gameObject.tag == "Purple" && collision.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject);
+        }
+        // If Orange collides with player destroy orange
+        if (gameObject.tag == "Orange" && collision.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject);
+        }
+
+        // If Purple collides with player destroy purple
+        if (gameObject.tag == "Purple" && collision.gameObject.tag == "WinCondition")
+        {
+            Destroy(gameObject);
+        }
+        // If Orange collides with player destroy orange
+        if (gameObject.tag == "Orange" && collision.gameObject.tag == "WinCondition")
+        {
             Destroy(gameObject);
         }
     }
@@ -59,7 +80,6 @@ public class BulletController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
-            Debug.Log("Bullets collided");
         }
     }
 }

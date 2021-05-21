@@ -7,9 +7,11 @@ public class LevelSelectScript : MonoBehaviour
 {
     public void SelectLevel()
     {
-        Debug.Log("This.Button.Name: " + this.gameObject.name);
         switch (this.gameObject.name)
         {
+            case "TestLevel":
+                SceneManager.LoadScene("DefaultScene");
+                break;
             case "Level_1_Button":
                 SceneManager.LoadScene("Level_1");
                 break;

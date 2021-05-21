@@ -6,9 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody myRigidbody;
     private Camera mainCamera;
-    private GunController theGun;
+    [SerializeField] private BulletController playerBullet;
+    [SerializeField] private Transform firePoint;
 
-    public float moveSpeed;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float bulletSpeed;
+    [SerializeField] private float coolDownDefault = 0.1f;
+    float coolDown = 0;
 
     private Vector3 moveInput;
     private Vector3 moveVelocity;
@@ -18,15 +22,35 @@ public class PlayerController : MonoBehaviour
     {
         myRigidbody = GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();
-        theGun = GameObject.FindWithTag("Player").GetComponent<GunController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        coolDown += Time.deltaTime;
+
+        Movement();
+        Rotation();
+
+        if (Input.GetMouseButton(0))
+        {
+            Shoot();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        myRigidbody.velocity = moveVelocity;
+    }
+
+    public void Movement()
+    {
         moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
         moveVelocity = moveInput * moveSpeed;
+    }
 
+    public void Rotation()
+    {
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
         float rayLength;
@@ -36,22 +60,19 @@ public class PlayerController : MonoBehaviour
             Vector3 pointToLook = cameraRay.GetPoint(rayLength);
             Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
 
+            transform.Rotate(0f, 45f, 0f, Space.World);
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
-        }
-
-        if(Input.GetMouseButtonDown(0))
-        {
-            theGun.isFiring = true;
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            theGun.isFiring = false;
         }
     }
 
-    private void FixedUpdate()
+    public void Shoot()
     {
-        myRigidbody.velocity = moveVelocity;
+        if (coolDown > coolDownDefault)
+        {
+            BulletController newBullet = Instantiate(playerBullet, firePoint.position, firePoint.rotation) as BulletController;
+            newBullet.speed = bulletSpeed;
+            coolDown = 0;
+        }
     }
 }
     
