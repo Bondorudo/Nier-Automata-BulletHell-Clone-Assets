@@ -18,9 +18,7 @@ public class PlayerController : MonoBehaviour
     {
         myRigidbody = GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();
-
-        
-}
+    }
 
     // Update is called once per frame
     void Update()

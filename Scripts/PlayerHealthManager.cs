@@ -14,6 +14,8 @@ public class PlayerHealthManager : MonoBehaviour
     public int currentHealth;
 
     private Color storedColor;
+
+    public int wallDamage = 1;
     
 
     void Start()
@@ -50,5 +52,13 @@ public class PlayerHealthManager : MonoBehaviour
         currentHealth -= damageAmount;
         flashCounter = flashLength;
         rend.material.SetColor("_Color", Color.red);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "DamageWall")
+        {
+            HurtPlayer(wallDamage);
+        }
     }
 }
