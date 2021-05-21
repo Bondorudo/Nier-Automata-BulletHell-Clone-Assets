@@ -8,30 +8,35 @@ public class GunController : MonoBehaviour
     public BulletController enemyBulletBreakable;
     public Transform firePoint;
 
-    public float bulletSpeed;
+    public int damage = 1;
+    public float bulletSpeed = 10;
     public float coolDownDefault = 0.1f;
     public float changeBulletTimer;
     float coolDown = 0;
     
     public bool changeProjectile = false;
+    private bool canShoot;
 
-    /*
-    private void Awake()
+    private void Start()
     {
-        InvokeRepeating("Switch", 0, changeBulletTimer);
+        StartCoroutine(ShootEnum());
+        canShoot = false;
     }
-
-    void Switch()
-    {
-        changeProjectile = !changeProjectile;
-    }
-    */
 
     public void Update()
     {
         coolDown += Time.deltaTime;
 
-        Shoot();
+        if (canShoot == true)
+        {
+            Shoot();
+        }
+    }
+
+    IEnumerator ShootEnum()
+    {
+        yield return new WaitForSeconds(0.5f);
+        canShoot = true;
     }
 
     public void Shoot()

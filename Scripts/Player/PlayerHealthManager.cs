@@ -70,7 +70,7 @@ public class PlayerHealthManager : MonoBehaviour
     // Decrease Health when colliding with damaging walls
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "DamageWall")
+        if (collision.gameObject.tag == "DamageWall" || collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Shield")
         {
             HurtPlayer(wallDamage);
         }

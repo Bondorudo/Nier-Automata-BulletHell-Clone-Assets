@@ -120,7 +120,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &3908594156620732471
 MonoBehaviour:
@@ -169,6 +169,7 @@ MonoBehaviour:
   enemyBulletBreakable: {fileID: 6697473867413339652, guid: 9f39e7b38e78dd744860e8f9fa62f0ee,
     type: 3}
   firePoint: {fileID: 3908594157013845837}
+  damage: 1
   bulletSpeed: 10
   coolDownDefault: 0.1
   changeBulletTimer: 1
@@ -190,6 +191,7 @@ MonoBehaviour:
   enemyBulletBreakable: {fileID: 6697473867413339652, guid: 9f39e7b38e78dd744860e8f9fa62f0ee,
     type: 3}
   firePoint: {fileID: 3908594157539187456}
+  damage: 1
   bulletSpeed: 10
   coolDownDefault: 0.1
   changeBulletTimer: 2

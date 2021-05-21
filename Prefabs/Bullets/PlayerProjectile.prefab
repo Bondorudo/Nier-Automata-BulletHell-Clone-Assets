@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8703431556932724321}
   - component: {fileID: 8703431556932724322}
   - component: {fileID: 8703431556932724323}
-  - component: {fileID: 5728074393109441845}
   - component: {fileID: 8703431556932724324}
   - component: {fileID: 54408217750370286}
+  - component: {fileID: 1708470152508540197}
   m_Layer: 0
   m_Name: PlayerProjectile
   m_TagString: PlayerBullet
@@ -85,21 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5728074393109441845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8703431556932724325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd8ef993377d1447a26b1a609e14b46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 25
-  destroyBullet: 4
-  damageToGive: 1
 --- !u!65 &8703431556932724324
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -129,3 +114,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &1708470152508540197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8703431556932724325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0106c82072f79db4184b104ccfafe64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  damageToGive: 1

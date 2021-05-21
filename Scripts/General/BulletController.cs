@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    public float speed = 15;
-    public float destroyBullet = 4;
+    private GunController gunControl;
 
-    public int damageToGive = 1;
+    public float speed;
+    private float destroyBullet = 4;
 
+    private int damageToGive;
+
+    private void Start()
+    {
+        gunControl = GameObject.FindWithTag("Enemy").GetComponent<GunController>();
+        speed = gunControl.bulletSpeed;
+        damageToGive = gunControl.damage;
+    }
 
     void Update()
     {
@@ -21,7 +29,7 @@ public class BulletController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // If Bullet hits walls destroy it
-        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "DamageWall")
+        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "DamageWall" || collision.gameObject.tag == "Orange" || collision.gameObject.tag == "Purple")
         {
             Destroy(gameObject);
         }
@@ -57,34 +65,6 @@ public class BulletController : MonoBehaviour
         // If Orange collides with player destroy orange
         if (gameObject.tag == "Orange" && collision.gameObject.tag == "WinCondition")
         {
-            Destroy(gameObject);
-        }
-    }
-
-    // Player Bullets
-    private void OnTriggerEnter(Collider collision)
-    {
-        // If Bullet hits walls destroy it
-        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "DamageWall")
-        {
-            Destroy(gameObject);
-        }
-        // If Player Bullet and Enemy collide deal damage to enemy and destroy bullet
-        if (gameObject.tag == "PlayerBullet" && collision.gameObject.tag == "Enemy")
-        {
-            collision.gameObject.GetComponent<EnemyManager>().HurtEnemy(damageToGive);
-            Destroy(gameObject);
-        }
-        // If Player Bullet and Enemy collide deal damage to enemy and destroy bullet
-        if (gameObject.tag == "PlayerBullet" && collision.gameObject.tag == "WinCondition")
-        {
-            collision.gameObject.GetComponent<EnemyManager>().HurtEnemy(damageToGive);
-            Destroy(gameObject);
-        }
-        // If Player Bullet and Orange Enemy Bullet collide destroy both bullets
-        if (gameObject.tag == "PlayerBullet" && collision.gameObject.tag == "Orange")
-        {
-            Destroy(collision.gameObject);
             Destroy(gameObject);
         }
     }

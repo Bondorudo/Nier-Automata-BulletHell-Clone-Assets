@@ -17,7 +17,12 @@ public class UI_Script : MonoBehaviour
     public TextMeshProUGUI victoryText;
     public Button nextLevelButton;
 
+    private int nextLevelToLoad;
 
+    private void Start()
+    {
+        nextLevelToLoad = SceneManager.GetActiveScene().buildIndex + 1;
+    }
 
     public void PauseMenu()
     {
@@ -55,7 +60,7 @@ public class UI_Script : MonoBehaviour
 
     public void NextLevelButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(nextLevelToLoad);
     }
 
     public void QuitToMenu()

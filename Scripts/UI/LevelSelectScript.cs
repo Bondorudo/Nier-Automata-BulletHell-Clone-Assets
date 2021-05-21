@@ -21,6 +21,12 @@ public class LevelSelectScript : MonoBehaviour
             case "Level_3_Button":
                 SceneManager.LoadScene("Level_3");
                 break;
+            case "Level_4_Button":
+                SceneManager.LoadScene("Level_4");
+                break;
+            case "Level_10_Button":
+                SceneManager.LoadScene("Level_10");
+                break;
         }
     }
 }

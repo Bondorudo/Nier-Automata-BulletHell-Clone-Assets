@@ -6,12 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody myRigidbody;
     private Camera mainCamera;
-    [SerializeField] private BulletController playerBullet;
+    [SerializeField] private PlayerBulletController playerBullet;
     [SerializeField] private Transform firePoint;
 
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float bulletSpeed;
     [SerializeField] private float coolDownDefault = 0.1f;
+    public float bulletSpeed = 25;
+    public int damage = 1;
     float coolDown = 0;
 
     private Vector3 moveInput;
@@ -69,8 +70,7 @@ public class PlayerController : MonoBehaviour
     {
         if (coolDown > coolDownDefault)
         {
-            BulletController newBullet = Instantiate(playerBullet, firePoint.position, firePoint.rotation) as BulletController;
-            newBullet.speed = bulletSpeed;
+            Instantiate(playerBullet, firePoint.position, firePoint.rotation);
             coolDown = 0;
         }
     }
