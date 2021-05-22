@@ -7,35 +7,39 @@ public class GunController : MonoBehaviour
     [SerializeField] private GameObject enemyBulletNonBreakable;
     [SerializeField] private GameObject enemyBulletBreakable;
     public Transform firePoint;
+    public Transform firePoint2;
 
     public int damage = 1;
     public float bulletSpeed = 10;
-    public float coolDownDefault = 0.1f;
-    float coolDown = 0;
     
     public bool changeProjectile = false;
-
-
-    public void Update()
-    {
-        coolDown += Time.deltaTime;
-    }
+    public bool hasTwoFirePoints = false;
 
 
     public void Shoot()
     {
-        //A new projectile can be shot once coolDown reaches coolDownDefault
-        if (coolDown > coolDownDefault)
+        if (hasTwoFirePoints == true)
         {
             if (changeProjectile == true)
             {
                 GameObject.Instantiate(enemyBulletNonBreakable, firePoint.position, firePoint.rotation);
-                coolDown = 0;
+                GameObject.Instantiate(enemyBulletNonBreakable, firePoint2.position, firePoint2.rotation);
             }
             if (changeProjectile == false)
             {
                 GameObject.Instantiate(enemyBulletBreakable, firePoint.position, firePoint.rotation);
-                coolDown = 0;
+                GameObject.Instantiate(enemyBulletBreakable, firePoint2.position, firePoint2.rotation);
+            }
+        }
+        else if (hasTwoFirePoints == false)
+        {
+            if (changeProjectile == true)
+            {
+                GameObject.Instantiate(enemyBulletNonBreakable, firePoint.position, firePoint.rotation);
+            }
+            if (changeProjectile == false)
+            {
+                GameObject.Instantiate(enemyBulletBreakable, firePoint.position, firePoint.rotation);
             }
         }
     }

@@ -44,11 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692a125b3c83a944eb34c69df86a3d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelMusic: {fileID: 8300000, guid: 1406af93e9de44b879499bb06a2a0579, type: 3}
   uiButtonSound: {fileID: 8300000, guid: 28b4b9b0a57ba4b44a7e5e35c6fa919c, type: 3}
   playerProjectile: {fileID: 8300000, guid: 220e455152ad64ea3862da6a600ee519, type: 3}
   playerDamage: {fileID: 8300000, guid: e34e5de4fb6f0405987dc922e27778b9, type: 3}
   playerDeath: {fileID: 8300000, guid: 8c8cf390751984ba59f5827d68ddbdeb, type: 3}
-  bulletCollision: {fileID: 8300000, guid: 3f692f0823b3f45afb000d656f137d55, type: 3}
+  bulletCollision: {fileID: 8300000, guid: 7a36f3dd55fa646d1bf44ca02fc73842, type: 3}
   enemyDamage: {fileID: 8300000, guid: 4b65b8adf1a5d436785169345c0264fd, type: 3}
   enemyDeath: {fileID: 8300000, guid: a62f2be5f31fc4e5bb72af4cc1c43054, type: 3}
   enemyProjectile: {fileID: 8300000, guid: 902828a83676948b2a085a2c006596fd, type: 3}
@@ -64,9 +65,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

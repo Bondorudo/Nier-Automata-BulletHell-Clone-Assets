@@ -5,6 +5,8 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     private AudioSource audioSource;
+    private AudioSource musicSource;
+    public AudioClip levelMusic;
     public AudioClip uiButtonSound;
     public AudioClip playerProjectile;
     public AudioClip playerDamage;
@@ -18,13 +20,10 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(levelMusic, 0.3f);
+        audioSource.loop = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void ButtonPressAudio()
     {
@@ -33,7 +32,7 @@ public class AudioManager : MonoBehaviour
 
     public void BulletCollisionAudio()
     {
-        audioSource.PlayOneShot(bulletCollision, 0.1f);
+        audioSource.PlayOneShot(bulletCollision, 1f);
     }
    
     public void PlayerProjectileAudio()
@@ -48,17 +47,17 @@ public class AudioManager : MonoBehaviour
 
     public void PlayerDamageAudio()
     {
-        audioSource.PlayOneShot(playerDamage, 0.3f);
+        audioSource.PlayOneShot(playerDamage, 0.4f);
     }
 
     public void EnemyProjectileAudio()
     {
-        audioSource.PlayOneShot(enemyProjectile, 0.3f);
+        audioSource.PlayOneShot(enemyProjectile, 0.2f);
     }
 
     public void EnemyDeathAudio()
     {
-        audioSource.PlayOneShot(enemyDeath, 0.4f);
+        audioSource.PlayOneShot(enemyDeath, 0.6f);
     }
 
     public void EnemyDamageAudio()

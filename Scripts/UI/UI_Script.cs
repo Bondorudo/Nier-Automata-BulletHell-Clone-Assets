@@ -9,12 +9,12 @@ using UnityEngine.SceneManagement;
 public class UI_Script : MonoBehaviour
 {
     public TextMeshProUGUI pauseText;
+    public Button nextLevelButton;
     public Button continueButton;
-    public TextMeshProUGUI deathText;
     public Button restartButton;
     public Button quitButton;
-    public TextMeshProUGUI victoryText;
-    public Button nextLevelButton;
+    public TextMeshProUGUI loseText;
+    public TextMeshProUGUI winText;
 
     private int nextLevelToLoad;
     private int sceneCount;
@@ -35,13 +35,13 @@ public class UI_Script : MonoBehaviour
 
     public void GameOver()
     {
-        deathText.gameObject.SetActive(true);
+        loseText.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(true);
     }
 
     public void Victory()
     {
-        victoryText.gameObject.SetActive(true);
+        winText.gameObject.SetActive(true);
         nextLevelButton.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(true);
         quitButton.gameObject.SetActive(true);

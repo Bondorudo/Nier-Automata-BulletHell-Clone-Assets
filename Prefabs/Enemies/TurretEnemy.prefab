@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 3908594156620732471}
   - component: {fileID: 3908594156620732470}
   - component: {fileID: 3908594156620732473}
-  - component: {fileID: 3908594156620732472}
   - component: {fileID: 8146265167407274311}
   - component: {fileID: 2711418322492252529}
   m_Layer: 6
@@ -150,12 +149,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 3908594156620732478}
   explosionParticle: {fileID: 4697990723313893750}
-  enemyDamage: {fileID: 8300000, guid: 4b65b8adf1a5d436785169345c0264fd, type: 3}
-  enemyDeath: {fileID: 8300000, guid: a62f2be5f31fc4e5bb72af4cc1c43054, type: 3}
-  enemyProjectile: {fileID: 8300000, guid: 902828a83676948b2a085a2c006596fd, type: 3}
   speed: 0
   damping: 5
   rotationSpeed: 200
+  coolDownDefault: 0.1
   health: 3
   canTakeDamage: 1
   rotateClockwise: 1
@@ -176,33 +173,11 @@ MonoBehaviour:
   enemyBulletBreakable: {fileID: 4829330669069298905, guid: 9f39e7b38e78dd744860e8f9fa62f0ee,
     type: 3}
   firePoint: {fileID: 3908594157013845837}
+  firePoint2: {fileID: 3908594157539187456}
   damage: 1
   bulletSpeed: 10
-  coolDownDefault: 0.1
   changeProjectile: 1
-  isTouchingWall: 0
---- !u!114 &3908594156620732472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3908594156620732478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d68817075b2fc104bb58c66fb59f15dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyBulletNonBreakable: {fileID: 5753433531923786704, guid: 29f27136a115a5d4091fd180b9bad5cd,
-    type: 3}
-  enemyBulletBreakable: {fileID: 4829330669069298905, guid: 9f39e7b38e78dd744860e8f9fa62f0ee,
-    type: 3}
-  firePoint: {fileID: 3908594157539187456}
-  damage: 1
-  bulletSpeed: 10
-  coolDownDefault: 0.1
-  changeProjectile: 1
-  isTouchingWall: 0
+  hasTwoFirePoints: 1
 --- !u!114 &8146265167407274311
 MonoBehaviour:
   m_ObjectHideFlags: 0

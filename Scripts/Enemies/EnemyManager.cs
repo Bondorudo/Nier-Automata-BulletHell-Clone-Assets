@@ -17,6 +17,9 @@ public class EnemyManager : MonoBehaviour
     public float damping = 5;
     public float rotationSpeed = 10f;
 
+    public float coolDownDefault = 0.1f;
+    private float coolDown = 0;
+
     public int health = 3;
     private int currentHealth;
 
@@ -39,6 +42,11 @@ public class EnemyManager : MonoBehaviour
         canShoot = false;
     }
 
+    private void Update()
+    {
+        coolDown += Time.deltaTime;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == 10)
@@ -57,10 +65,11 @@ public class EnemyManager : MonoBehaviour
 
     public void Shooting()
     {
-        if (canShoot == true && isTouchingWall == false)
+        if (canShoot == true && isTouchingWall == false && coolDown >= coolDownDefault)
         {
             gunController.Shoot();
             audioManager.EnemyProjectileAudio();
+            coolDown = 0;
         }
     }
 

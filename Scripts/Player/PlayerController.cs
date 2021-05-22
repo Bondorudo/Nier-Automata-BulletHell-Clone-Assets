@@ -9,8 +9,10 @@ public class PlayerController : MonoBehaviour
     private AudioManager audioManager;
     [SerializeField] private GameObject playerBullet;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private ParticleSystem movementParticles;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float coolDownDefault = 0.1f;
+
     public float bulletSpeed = 25;
     public int damage = 1;
     float coolDown = 0;
@@ -38,6 +40,15 @@ public class PlayerController : MonoBehaviour
         {
             Shoot();
         }
+
+        if (myRigidbody.velocity != Vector3.zero)
+        {
+            if (!movementParticles.isPlaying) movementParticles.Play();
+        }
+        else
+        {
+            if (movementParticles.isPlaying) movementParticles.Stop();
+        }
     }
 
     private void FixedUpdate()
@@ -48,7 +59,7 @@ public class PlayerController : MonoBehaviour
     public void Movement()
     {
         moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-        moveVelocity = moveInput * moveSpeed;
+        moveVelocity = moveInput.normalized * moveSpeed;
     }
 
     public void Rotation()

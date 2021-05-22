@@ -396,10 +396,7 @@ MonoBehaviour:
   playerBullet: {fileID: 8703431556932724325, guid: d8e5764816fa17040bded2f366ffd07e,
     type: 3}
   firePoint: {fileID: 6629444865004154055}
-  playerDamage: {fileID: 8300000, guid: e34e5de4fb6f0405987dc922e27778b9, type: 3}
-  playerDeath: {fileID: 8300000, guid: 8c8cf390751984ba59f5827d68ddbdeb, type: 3}
-  playerProjectile: {fileID: 8300000, guid: 594c31f4943314a65886d87ed71925c2, type: 3}
-  bulletCollision: {fileID: 8300000, guid: 3f692f0823b3f45afb000d656f137d55, type: 3}
+  movementParticles: {fileID: 1650698480}
   moveSpeed: 10
   coolDownDefault: 0.1
   bulletSpeed: 25
@@ -716,6 +713,12 @@ PrefabInstance:
 --- !u!4 &1650698478 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3343163893092291658, guid: b4b3ea1a4b1254d4aa25637ea5e38682,
+    type: 3}
+  m_PrefabInstance: {fileID: 3343163894738599076}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1650698480 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3343163893092291668, guid: b4b3ea1a4b1254d4aa25637ea5e38682,
     type: 3}
   m_PrefabInstance: {fileID: 3343163894738599076}
   m_PrefabAsset: {fileID: 0}
