@@ -7,6 +7,7 @@ public class EnemyManager : MonoBehaviour
     private Rigidbody enemyRb;
     private PlayerController thePlayer;
     private AreAllEnemiesDead areEnemiseDead;
+    private GameManager gm;
     public GameObject enemy;
     private GunController gunController;
 
@@ -18,6 +19,7 @@ public class EnemyManager : MonoBehaviour
     private int currentHealth;
 
     public bool canTakeDamage = true;
+    public bool rotateClockwise = true;
 
 
     void Start()
@@ -26,7 +28,24 @@ public class EnemyManager : MonoBehaviour
         thePlayer = FindObjectOfType<PlayerController>();
         gunController = GetComponent<GunController>();
         areEnemiseDead = GameObject.FindWithTag("GameManager").GetComponent<AreAllEnemiesDead>();
+        gm = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         currentHealth = health;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == 10)
+        {
+            gunController.isTouchingWall = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.layer == 10)
+        {
+            gunController.isTouchingWall = false;
+        }
     }
 
     public void Shooting()
@@ -41,14 +60,24 @@ public class EnemyManager : MonoBehaviour
 
     public void Rotations()
     {
-        //Enemy rotates to look at the player
-        var rotation = Quaternion.LookRotation(thePlayer.transform.position - enemy.transform.position);
-        enemy.transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
+        if (gm.isGameOver == false)
+        {
+            //Enemy rotates to look at the player
+            var rotation = Quaternion.LookRotation(thePlayer.transform.position - enemy.transform.position);
+            enemy.transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
+        }
     }
 
     public void ContinuousRotation()
     {
-        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+        if (rotateClockwise == true)
+        {
+            transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+        }
+        else if (rotateClockwise == false)
+        {
+            transform.Rotate(0, -rotationSpeed * Time.deltaTime, 0);
+        }
     }
 
     //Enemy takes damage

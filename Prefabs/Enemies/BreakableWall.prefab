@@ -78,9 +78,9 @@ GameObject:
   - component: {fileID: 3786239633536446474}
   - component: {fileID: 1668393352217638600}
   - component: {fileID: 3553997207571191286}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: BreakableWall
-  m_TagString: Enemy
+  m_TagString: BreakableWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,7 +160,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.55
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

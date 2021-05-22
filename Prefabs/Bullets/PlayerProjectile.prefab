@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8703431556932724323}
   - component: {fileID: 8703431556932724324}
   - component: {fileID: 54408217750370286}
-  - component: {fileID: 1708470152508540197}
+  - component: {fileID: 8178104797548918795}
   m_Layer: 0
   m_Name: PlayerProjectile
   m_TagString: PlayerBullet
@@ -114,7 +114,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &1708470152508540197
+--- !u!114 &8178104797548918795
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,5 +126,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0106c82072f79db4184b104ccfafe64c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  damageToGive: 1

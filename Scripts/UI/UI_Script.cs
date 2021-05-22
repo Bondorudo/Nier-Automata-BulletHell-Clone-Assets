@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class UI_Script : MonoBehaviour
 {
-    public TextMeshProUGUI healthText;
     public TextMeshProUGUI pauseText;
     public Button continueButton;
     public TextMeshProUGUI deathText;
@@ -18,10 +17,12 @@ public class UI_Script : MonoBehaviour
     public Button nextLevelButton;
 
     private int nextLevelToLoad;
+    private int sceneCount;
 
     private void Start()
     {
         nextLevelToLoad = SceneManager.GetActiveScene().buildIndex + 1;
+        sceneCount = SceneManager.sceneCountInBuildSettings;
     }
 
     public void PauseMenu()
@@ -60,7 +61,14 @@ public class UI_Script : MonoBehaviour
 
     public void NextLevelButton()
     {
-        SceneManager.LoadScene(nextLevelToLoad);
+        if (nextLevelToLoad < sceneCount)
+        {
+            SceneManager.LoadScene(nextLevelToLoad);
+        }
+        else
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
     public void QuitToMenu()

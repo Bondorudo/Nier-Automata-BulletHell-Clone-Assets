@@ -171,7 +171,7 @@ MonoBehaviour:
   bulletSpeed: 7
   coolDownDefault: 0.4
   changeBulletTimer: 0
-  changeProjectile: 1
+  changeProjectile: 0
 --- !u!114 &2947665049559887983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6564716440593721120}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: EnemyFirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6492229384480477598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.5}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9167711983881853598}

@@ -15,14 +15,17 @@ public class GameManager : MonoBehaviour
     private AreAllEnemiesDead areEnemiseDead;
 
     private bool pauseGame;
+    public bool isGameOver;
     
     private void Start()
     {
+        player.SetActive(true);
         uiScript = GameObject.FindWithTag("GameManager").GetComponent<UI_Script>();
         heartManager = GameObject.FindWithTag("WinCondition").GetComponent<EnemyManager>();
         levelHeart = GameObject.FindWithTag("WinCondition").GetComponent<LevelHeart>();
         areEnemiseDead = GameObject.FindWithTag("GameManager").GetComponent<AreAllEnemiesDead>();
         pauseGame = false;
+        isGameOver = false;
     }
 
     void Update()
@@ -81,14 +84,13 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        player.SetActive(false);
+        isGameOver = true;
         pauseGame = true;
         uiScript.GameOver();
     }
 
     public void NextLevelButton()
     {
-        player.SetActive(true);
         uiScript.NextLevelButton();
     }
 
@@ -99,7 +101,6 @@ public class GameManager : MonoBehaviour
     }
     public void RestartButton()
     {
-        player.SetActive(true);
         uiScript.RestartButton();
     }
 

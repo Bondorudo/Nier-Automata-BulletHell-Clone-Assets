@@ -164,14 +164,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68817075b2fc104bb58c66fb59f15dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyBulletNonBreakable: {fileID: 0}
-  enemyBulletBreakable: {fileID: 0}
+  enemyBulletNonBreakable: {fileID: 5753433531923786704, guid: 29f27136a115a5d4091fd180b9bad5cd,
+    type: 3}
+  enemyBulletBreakable: {fileID: 4829330669069298905, guid: 9f39e7b38e78dd744860e8f9fa62f0ee,
+    type: 3}
   firePoint: {fileID: 3908594157013845837}
   damage: 1
   bulletSpeed: 10
   coolDownDefault: 0.1
   changeBulletTimer: 1
-  changeProjectile: 0
+  changeProjectile: 1
 --- !u!114 &3908594156620732472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +195,7 @@ MonoBehaviour:
   bulletSpeed: 10
   coolDownDefault: 0.1
   changeBulletTimer: 2
-  changeProjectile: 0
+  changeProjectile: 1
 --- !u!114 &8146265167407274311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3908594157013845837}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +234,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3908594157013845836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3908594156620732474}
@@ -247,7 +249,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3908594157539187456}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FirePoint 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +264,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3908594157539187459}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3908594156620732474}

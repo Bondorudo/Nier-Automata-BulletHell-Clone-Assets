@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 3647729483030303592}
   - component: {fileID: 3647729483030303593}
   - component: {fileID: 3647729483030303598}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LevelHeart
   m_TagString: WinCondition
   m_Icon: {fileID: 0}

@@ -149,6 +149,7 @@ MonoBehaviour:
   rotationSpeed: 10
   health: 3
   canTakeDamage: 1
+  rotateClockwise: 1
 --- !u!114 &4627956499213157450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +233,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 323963080818058411}
     m_Modifications:
+    - target: {fileID: 3647168295764496342, guid: 0157879f35ed31548a36e7a217d34bf7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647168295764496342, guid: 0157879f35ed31548a36e7a217d34bf7,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 3647168295764496343, guid: 0157879f35ed31548a36e7a217d34bf7,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -241,6 +252,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647168296043334916, guid: 0157879f35ed31548a36e7a217d34bf7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647168296043334916, guid: 0157879f35ed31548a36e7a217d34bf7,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3647168296043334917, guid: 0157879f35ed31548a36e7a217d34bf7,
         type: 3}
@@ -311,6 +332,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647168296111997442, guid: 0157879f35ed31548a36e7a217d34bf7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3647168296111997443, guid: 0157879f35ed31548a36e7a217d34bf7,
         type: 3}

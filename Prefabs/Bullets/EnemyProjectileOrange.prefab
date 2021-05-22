@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4829330669069298886}
   - component: {fileID: 6697473867413339652}
   - component: {fileID: 9132728487098673899}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyProjectileOrange
   m_TagString: Orange
   m_Icon: {fileID: 0}
@@ -111,8 +111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  destroyBullet: 4
-  damageToGive: 1
 --- !u!54 &9132728487098673899
 Rigidbody:
   m_ObjectHideFlags: 0

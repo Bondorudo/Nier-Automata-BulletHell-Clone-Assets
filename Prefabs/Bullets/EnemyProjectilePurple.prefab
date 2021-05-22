@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5753433531923786705}
   - component: {fileID: 632750245220503400}
   - component: {fileID: 2214377612646186495}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyProjectilePurple
   m_TagString: Purple
   m_Icon: {fileID: 0}
@@ -111,8 +111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  destroyBullet: 4
-  damageToGive: 1
 --- !u!54 &2214377612646186495
 Rigidbody:
   m_ObjectHideFlags: 0

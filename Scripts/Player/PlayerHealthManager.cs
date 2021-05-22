@@ -6,29 +6,28 @@ public class PlayerHealthManager : MonoBehaviour
 {
     private Renderer rend;
     private GameManager gameManager;
-    private UI_Script uiScript;
-
+    [SerializeField] private ParticleSystem explosionParticle;
 
     public float flashLength;
     private float flashCounter;
+    private float iFrameCounter;
 
-    public int startingHealth = 3;
+    private int wallDamage = 1;
+    private int startingHealth = 3;
     private int currentHealth;
 
     private Color storedColor;
 
-    public int wallDamage = 1;
-    
 
     void Start()
     {
-        uiScript = GameObject.FindWithTag("GameManager").GetComponent<UI_Script>();
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         currentHealth = startingHealth;
         rend = GetComponentInChildren<Renderer>();
         storedColor = rend.material.GetColor("_Color");
         transform.Find("Health_1").gameObject.SetActive(true);
         transform.Find("Health_2").gameObject.SetActive(true);
+        iFrameCounter = flashLength;
     }
     
     void Update()
@@ -36,7 +35,10 @@ public class PlayerHealthManager : MonoBehaviour
         // Game over happens if player health is equal to 0
         if (currentHealth <= 0)
         {
-            gameManager.GameOver();
+            rend.material.SetColor("_Color", storedColor);
+            if (!explosionParticle.isPlaying) explosionParticle.Play();
+            StartCoroutine(waitForParticles());
+
         }
 
         if (currentHealth == 2)
@@ -56,18 +58,34 @@ public class PlayerHealthManager : MonoBehaviour
                 rend.material.SetColor("_Color", storedColor);
             }
         }
-        uiScript.healthText.text = "Health: " + currentHealth;
+        // Decrease iFrame counter
+        if (iFrameCounter > 0)
+        {
+            iFrameCounter -= Time.deltaTime;
+        }
+    }
+
+    IEnumerator waitForParticles()
+    {
+        yield return new WaitForSeconds(0.3f);
+        gameManager.GameOver();
     }
 
     // When player is hurt they lose health and their color turns red
     public void HurtPlayer(int damageAmount)
     {
-        currentHealth -= damageAmount;
-        flashCounter = flashLength;
-        rend.material.SetColor("_Color", Color.red);
+        // If iFrame counter is less than zero player can take damage again.
+        if (flashCounter <= 0)
+        {
+            currentHealth -= damageAmount;
+            rend.material.SetColor("_Color", Color.red);
+            flashCounter = flashLength;
+            iFrameCounter = flashLength;
+        }
+        
     }
 
-    // Decrease Health when colliding with damaging walls
+    // Decrease Health when colliding with damaging walls and enemies
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "DamageWall" || collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Shield")
