@@ -6,9 +6,9 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody myRigidbody;
     private Camera mainCamera;
+    private AudioManager audioManager;
     [SerializeField] private GameObject playerBullet;
     [SerializeField] private Transform firePoint;
-
     [SerializeField] private float moveSpeed;
     [SerializeField] private float coolDownDefault = 0.1f;
     public float bulletSpeed = 25;
@@ -21,8 +21,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        myRigidbody = GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();
+        myRigidbody = GetComponent<Rigidbody>();
+        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -71,6 +72,7 @@ public class PlayerController : MonoBehaviour
         if (coolDown > coolDownDefault)
         {
             GameObject.Instantiate(playerBullet, firePoint.position, firePoint.rotation);
+            audioManager.PlayerProjectileAudio();
             coolDown = 0;
         }
     }

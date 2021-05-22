@@ -14,31 +14,13 @@ public class GunController : MonoBehaviour
     float coolDown = 0;
     
     public bool changeProjectile = false;
-    private bool canShoot;
-    public bool isTouchingWall;
 
-    private void Start()
-    {
-        StartCoroutine(ShootEnum());
-        canShoot = false;
-        isTouchingWall = false;
-    }
 
     public void Update()
     {
         coolDown += Time.deltaTime;
-
-        if (canShoot == true && isTouchingWall == false)
-        {
-            Shoot();
-        }
     }
 
-    IEnumerator ShootEnum()
-    {
-        yield return new WaitForSeconds(0.5f);
-        canShoot = true;
-    }
 
     public void Shoot()
     {

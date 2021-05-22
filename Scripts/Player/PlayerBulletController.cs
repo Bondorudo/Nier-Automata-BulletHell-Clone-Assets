@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerBulletController : MonoBehaviour
 {
     private PlayerController player;
+    private AudioManager audioManager;
 
     private float speed;
     private float destroyBullet = 4;
@@ -14,6 +15,7 @@ public class PlayerBulletController : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
         speed = player.bulletSpeed;
         damageToGive = player.damage;
     }
@@ -43,6 +45,7 @@ public class PlayerBulletController : MonoBehaviour
         // If Player Bullet and Orange Enemy Bullet collide destroy both bullets
         if (collision.gameObject.tag == "Orange")
         {
+            audioManager.BulletCollisionAudio();
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }

@@ -18,6 +18,7 @@ public class NormalEnemy : MonoBehaviour
     void Update()
     {
         enemyManager.Rotations();
+        enemyManager.Shooting();
     }
 
     private void FixedUpdate()

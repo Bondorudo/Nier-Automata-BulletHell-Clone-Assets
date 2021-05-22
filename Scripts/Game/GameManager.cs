@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public GameObject player;
-
+    private AudioManager audioManager;
     private UI_Script uiScript;
     private EnemyManager heartManager;
     private LevelHeart levelHeart;
@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         player.SetActive(true);
+        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
         uiScript = GameObject.FindWithTag("GameManager").GetComponent<UI_Script>();
         heartManager = GameObject.FindWithTag("WinCondition").GetComponent<EnemyManager>();
         levelHeart = GameObject.FindWithTag("WinCondition").GetComponent<LevelHeart>();
@@ -96,16 +97,19 @@ public class GameManager : MonoBehaviour
 
     public void NextLevelButton()
     {
+        audioManager.ButtonPressAudio();
         uiScript.NextLevelButton();
     }
 
     public void ContinueButton()
     {
+        audioManager.ButtonPressAudio();
         pauseGame = false;
         uiScript.ContinueButton();
     }
     public void RestartButton()
     {
+        audioManager.ButtonPressAudio();
         uiScript.RestartButton();
     }
 

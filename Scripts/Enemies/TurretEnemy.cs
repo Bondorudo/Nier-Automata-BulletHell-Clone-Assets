@@ -18,6 +18,7 @@ public class TurretEnemy : MonoBehaviour
     void Update()
     {
         enemyManager.ContinuousRotation();
+        enemyManager.Shooting();
     }
 
 }
