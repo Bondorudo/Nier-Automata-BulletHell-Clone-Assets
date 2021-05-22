@@ -55,10 +55,13 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.E))
+        if (!isGameOver)
         {
-            pauseGame = true;
-            uiScript.PauseMenu();
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.E))
+            {
+                pauseGame = true;
+                uiScript.PauseMenu();
+            }
         }
         if (pauseGame == true)
         {
@@ -79,11 +82,13 @@ public class GameManager : MonoBehaviour
     public void Victory()
     {
         pauseGame = true;
+        isGameOver = true;
         uiScript.Victory();
     }
 
     public void GameOver()
     {
+        player.SetActive(false);
         isGameOver = true;
         pauseGame = true;
         uiScript.GameOver();

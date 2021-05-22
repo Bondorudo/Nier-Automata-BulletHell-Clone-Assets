@@ -10,6 +10,7 @@ public class EnemyManager : MonoBehaviour
     private GameManager gm;
     public GameObject enemy;
     private GunController gunController;
+    public ParticleSystem explosionParticle;
 
     public float speed = 3;
     public float damping = 5;
@@ -96,6 +97,8 @@ public class EnemyManager : MonoBehaviour
         //Destroy enemy object when its health is 0
         if (currentHealth <= 0)
         {
+            explosionParticle.transform.parent = null;
+            explosionParticle.Play();
             areEnemiseDead.DestroyedCondition(gameObject);
             gameObject.SetActive(false);
         }

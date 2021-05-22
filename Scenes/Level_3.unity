@@ -1816,7 +1816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57efcdc85de225c47b6be2f8dd4a1c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 6629444865038804646, guid: 8b79942da836daf439f21e56cd92d1a1, type: 3}
+  player: {fileID: 431656485}
   isGameOver: 0
 --- !u!114 &442910222
 MonoBehaviour:

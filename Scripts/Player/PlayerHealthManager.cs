@@ -36,8 +36,9 @@ public class PlayerHealthManager : MonoBehaviour
         if (currentHealth <= 0)
         {
             rend.material.SetColor("_Color", storedColor);
+            explosionParticle.transform.parent = null;
             if (!explosionParticle.isPlaying) explosionParticle.Play();
-            StartCoroutine(waitForParticles());
+            gameManager.GameOver();
 
         }
 
@@ -63,12 +64,6 @@ public class PlayerHealthManager : MonoBehaviour
         {
             iFrameCounter -= Time.deltaTime;
         }
-    }
-
-    IEnumerator waitForParticles()
-    {
-        yield return new WaitForSeconds(0.3f);
-        gameManager.GameOver();
     }
 
     // When player is hurt they lose health and their color turns red

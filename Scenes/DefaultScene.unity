@@ -1989,7 +1989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57efcdc85de225c47b6be2f8dd4a1c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 6629444865038804646, guid: 8b79942da836daf439f21e56cd92d1a1, type: 3}
+  player: {fileID: 431656485}
   isGameOver: 0
 --- !u!114 &442910222
 MonoBehaviour:
@@ -6047,6 +6047,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1582857666, guid: 8b79942da836daf439f21e56cd92d1a1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 55f39c0afa604bb42a1c28d5c597cdb8, type: 2}
     - target: {fileID: 6629444865038804636, guid: 8b79942da836daf439f21e56cd92d1a1,
         type: 3}
       propertyPath: m_RootOrder
