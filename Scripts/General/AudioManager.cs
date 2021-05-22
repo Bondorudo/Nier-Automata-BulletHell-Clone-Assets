@@ -5,8 +5,8 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     private AudioSource audioSource;
-    private AudioSource musicSource;
     public AudioClip levelMusic;
+    [SerializeField] private float musicVolume = 0.3f;
     public AudioClip uiButtonSound;
     public AudioClip playerProjectile;
     public AudioClip playerDamage;
@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.PlayOneShot(levelMusic, 0.3f);
+        audioSource.PlayOneShot(levelMusic, musicVolume);
         audioSource.loop = true;
     }
 
