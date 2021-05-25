@@ -22,8 +22,8 @@ public class GunController : MonoBehaviour
         {
             if (changeProjectile == true)
             {
-                BulletController bullet = Instantiate(enemyBulletNonBreakable, firePoint.position, firePoint.rotation).GetComponent<BulletController>();
-                BulletController bullet2 = Instantiate(enemyBulletNonBreakable, firePoint2.position, firePoint2.rotation).GetComponent<BulletController>();
+                EnemyBulletController bullet = Instantiate(enemyBulletNonBreakable, firePoint.position, firePoint.rotation).GetComponent<EnemyBulletController>();
+                EnemyBulletController bullet2 = Instantiate(enemyBulletNonBreakable, firePoint2.position, firePoint2.rotation).GetComponent<EnemyBulletController>();
                 bullet.damageToGive = damage;
                 bullet.speed = bulletSpeed;
                 bullet2.damageToGive = damage;
@@ -31,8 +31,8 @@ public class GunController : MonoBehaviour
             }
             if (changeProjectile == false)
             {
-                BulletController bullet = Instantiate(enemyBulletBreakable, firePoint.position, firePoint.rotation).GetComponent<BulletController>();
-                BulletController bullet2 = Instantiate(enemyBulletBreakable, firePoint2.position, firePoint2.rotation).GetComponent<BulletController>();
+                EnemyBulletController bullet = Instantiate(enemyBulletBreakable, firePoint.position, firePoint.rotation).GetComponent<EnemyBulletController>();
+                EnemyBulletController bullet2 = Instantiate(enemyBulletBreakable, firePoint2.position, firePoint2.rotation).GetComponent<EnemyBulletController>();
                 bullet.damageToGive = damage;
                 bullet.speed = bulletSpeed;
                 bullet2.damageToGive = damage;
@@ -43,13 +43,13 @@ public class GunController : MonoBehaviour
         {
             if (changeProjectile == true)
             {
-                BulletController bullet = Instantiate(enemyBulletNonBreakable, firePoint.position, firePoint.rotation).GetComponent<BulletController>();
+                EnemyBulletController bullet = Instantiate(enemyBulletNonBreakable, firePoint.position, firePoint.rotation).GetComponent<EnemyBulletController>();
                 bullet.damageToGive = damage;
                 bullet.speed = bulletSpeed;
             }
             if (changeProjectile == false)
             {
-                BulletController bullet = Instantiate(enemyBulletBreakable, firePoint.position, firePoint.rotation).GetComponent<BulletController>();
+                EnemyBulletController bullet = Instantiate(enemyBulletBreakable, firePoint.position, firePoint.rotation).GetComponent<EnemyBulletController>();
                 bullet.damageToGive = damage;
                 bullet.speed = bulletSpeed;
             }

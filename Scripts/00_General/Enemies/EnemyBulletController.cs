@@ -1,14 +1,13 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletController : MonoBehaviour
+public class EnemyBulletController : MonoBehaviour
 {
     private float destroyBullet = 4;
 
     public float speed;
     public int damageToGive;
-
 
     void Update()
     {
@@ -33,4 +32,3 @@ public class BulletController : MonoBehaviour
         }
     }
 }
-
