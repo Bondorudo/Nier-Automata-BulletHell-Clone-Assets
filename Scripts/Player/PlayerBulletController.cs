@@ -4,27 +4,23 @@ using UnityEngine;
 
 public class PlayerBulletController : MonoBehaviour
 {
-    private PlayerController player;
     private AudioManager audioManager;
 
-    private float speed;
     private float destroyBullet = 4;
 
-    private int damageToGive;
+    public float bulletSpeed;
+    public int damageToGive;
 
     private void Start()
     {
-        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
-        speed = player.bulletSpeed;
-        damageToGive = player.damage;
     }
 
     // Update is called once per frame
     void Update()
     {
         //control projectile movement
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        transform.Translate(Vector3.forward * bulletSpeed * Time.deltaTime);
         Destroy(gameObject, destroyBullet);
     }
 

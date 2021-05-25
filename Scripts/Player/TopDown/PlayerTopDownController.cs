@@ -1,32 +1,30 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerTopDownController : MonoBehaviour
 {
-    private Rigidbody myRigidbody;
+    private Rigidbody rb;
     private Camera mainCamera;
     [SerializeField] private ParticleSystem movementParticles;
     [SerializeField] private float moveSpeed;
 
     private Vector3 moveInput;
     private Vector3 moveVelocity;
-    
+
 
     void Start()
     {
         mainCamera = FindObjectOfType<Camera>();
-        myRigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Movement();
-        Rotation();
+        TopDownRotation();
 
-
-        if (myRigidbody.velocity != Vector3.zero)
+        if (rb.velocity != Vector3.zero)
         {
             if (!movementParticles.isPlaying) movementParticles.Play();
         }
@@ -38,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        myRigidbody.velocity = moveVelocity;
+        rb.velocity = moveVelocity;
     }
 
     public void Movement()
@@ -47,7 +45,7 @@ public class PlayerController : MonoBehaviour
         moveVelocity = moveInput.normalized * moveSpeed;
     }
 
-    public void Rotation()
+    public void TopDownRotation()
     {
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
@@ -63,4 +61,3 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
-    

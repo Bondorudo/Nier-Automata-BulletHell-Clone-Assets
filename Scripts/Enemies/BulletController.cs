@@ -4,19 +4,11 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    private GunController gunControl;
-
-    public float speed;
     private float destroyBullet = 4;
 
-    private int damageToGive;
+    public float speed;
+    public int damageToGive;
 
-    private void Start()
-    {
-        gunControl = GameObject.FindWithTag("Enemy").GetComponent<GunController>();
-        speed = gunControl.bulletSpeed;
-        damageToGive = gunControl.damage;
-    }
 
     void Update()
     {

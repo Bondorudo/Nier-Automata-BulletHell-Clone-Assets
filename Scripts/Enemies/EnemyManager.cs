@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     private Rigidbody enemyRb;
-    private PlayerController thePlayer;
+    private GameObject thePlayer;
     private AreAllEnemiesDead areEnemiseDead;
     private GameManager gm;
     public GameObject enemy;
@@ -33,7 +33,7 @@ public class EnemyManager : MonoBehaviour
     {
         audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
         enemyRb = GetComponent<Rigidbody>();
-        thePlayer = FindObjectOfType<PlayerController>();
+        thePlayer = GameObject.FindWithTag("Player");
         gunController = GetComponent<GunController>();
         areEnemiseDead = GameObject.FindWithTag("GameManager").GetComponent<AreAllEnemiesDead>();
         gm = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();

@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     private UI_Script uiScript;
     private EnemyManager heartManager;
     private LevelHeart levelHeart;
-    private AreAllEnemiesDead areEnemiseDead;
+    private AreAllEnemiesDead areEnemiesDead;
 
     private bool pauseGame;
     public bool isGameOver;
@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         uiScript = GameObject.FindWithTag("GameManager").GetComponent<UI_Script>();
         heartManager = GameObject.FindWithTag("WinCondition").GetComponent<EnemyManager>();
         levelHeart = GameObject.FindWithTag("WinCondition").GetComponent<LevelHeart>();
-        areEnemiseDead = GameObject.FindWithTag("GameManager").GetComponent<AreAllEnemiesDead>();
+        areEnemiesDead = GameObject.FindWithTag("GameManager").GetComponent<AreAllEnemiesDead>();
         pauseGame = false;
         isGameOver = false;
     }
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     public void CheckCanHeartTakeDamage()
     {
-        if (areEnemiseDead.AreTheyDestroyed())
+        if (areEnemiesDead.AreTheyDestroyed())
         {
             levelHeart.CanTakeDamage();
             levelHeart.SetVulnerableColor();

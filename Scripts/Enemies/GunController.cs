@@ -22,24 +22,36 @@ public class GunController : MonoBehaviour
         {
             if (changeProjectile == true)
             {
-                GameObject.Instantiate(enemyBulletNonBreakable, firePoint.position, firePoint.rotation);
-                GameObject.Instantiate(enemyBulletNonBreakable, firePoint2.position, firePoint2.rotation);
+                BulletController bullet = Instantiate(enemyBulletNonBreakable, firePoint.position, firePoint.rotation).GetComponent<BulletController>();
+                BulletController bullet2 = Instantiate(enemyBulletNonBreakable, firePoint2.position, firePoint2.rotation).GetComponent<BulletController>();
+                bullet.damageToGive = damage;
+                bullet.speed = bulletSpeed;
+                bullet2.damageToGive = damage;
+                bullet2.speed = bulletSpeed;
             }
             if (changeProjectile == false)
             {
-                GameObject.Instantiate(enemyBulletBreakable, firePoint.position, firePoint.rotation);
-                GameObject.Instantiate(enemyBulletBreakable, firePoint2.position, firePoint2.rotation);
+                BulletController bullet = Instantiate(enemyBulletBreakable, firePoint.position, firePoint.rotation).GetComponent<BulletController>();
+                BulletController bullet2 = Instantiate(enemyBulletBreakable, firePoint2.position, firePoint2.rotation).GetComponent<BulletController>();
+                bullet.damageToGive = damage;
+                bullet.speed = bulletSpeed;
+                bullet2.damageToGive = damage;
+                bullet2.speed = bulletSpeed;
             }
         }
         else if (hasTwoFirePoints == false)
         {
             if (changeProjectile == true)
             {
-                GameObject.Instantiate(enemyBulletNonBreakable, firePoint.position, firePoint.rotation);
+                BulletController bullet = Instantiate(enemyBulletNonBreakable, firePoint.position, firePoint.rotation).GetComponent<BulletController>();
+                bullet.damageToGive = damage;
+                bullet.speed = bulletSpeed;
             }
             if (changeProjectile == false)
             {
-                GameObject.Instantiate(enemyBulletBreakable, firePoint.position, firePoint.rotation);
+                BulletController bullet = Instantiate(enemyBulletBreakable, firePoint.position, firePoint.rotation).GetComponent<BulletController>();
+                bullet.damageToGive = damage;
+                bullet.speed = bulletSpeed;
             }
         }
     }
