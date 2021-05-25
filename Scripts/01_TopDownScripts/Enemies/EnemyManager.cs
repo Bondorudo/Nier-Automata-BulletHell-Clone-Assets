@@ -8,7 +8,6 @@ public class EnemyManager : MonoBehaviour
     private GameObject thePlayer;
     private AreAllEnemiesDead areEnemiseDead;
     private GameManager gm;
-    public GameObject enemy;
     private GunController gunController;
     public ParticleSystem explosionParticle;
     private AudioManager audioManager;
@@ -89,8 +88,8 @@ public class EnemyManager : MonoBehaviour
         if (gm.isGameOver == false)
         {
             //Enemy rotates to look at the player
-            var rotation = Quaternion.LookRotation(thePlayer.transform.position - enemy.transform.position);
-            enemy.transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
+            var rotation = Quaternion.LookRotation(thePlayer.transform.position - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
         }
     }
 

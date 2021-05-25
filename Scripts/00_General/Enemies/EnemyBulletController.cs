@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class EnemyBulletController : MonoBehaviour
 {
-    private float destroyBullet = 4;
+    public float speed = 200f;
+    [HideInInspector] public int damageToGive = 1;
 
-    public float speed;
-    public int damageToGive;
+    public Vector2 moveDirection;
+
+    private void OnEnable()
+    {
+        Invoke("DisableBullet", 40f);
+    }
 
     void Update()
     {
-        //control projectile movement
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        Destroy(gameObject, destroyBullet);
+        transform.Translate(moveDirection * speed * Time.deltaTime);
     }
 
     // Enemy Bullets
@@ -22,13 +25,28 @@ public class EnemyBulletController : MonoBehaviour
         // If Bullet hits walls destroy it
         if (collision.gameObject.layer == 10)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
         // If Purple collides with player destroy purple and damage player
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerHealthManager>().HurtPlayer(damageToGive);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
+    }
+
+    public void SetMoveDirection(Vector2 dir)
+    {
+        moveDirection = dir;
+    }
+
+    private void DisableBullet()
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        CancelInvoke();
     }
 }
