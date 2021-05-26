@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public ParticleSystem explosionParticle;
     [HideInInspector] public AudioManager audioManager;
+    private AreAllEnemiesDead areAllEnemiesDead;
 
     public int damage;
 
@@ -16,10 +17,11 @@ public class Enemy : MonoBehaviour
 
     private bool isTouchingWall;
 
-    private void Start()
+    private void Awake()
     {
         isTouchingWall = false;
         audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
+        areAllEnemiesDead = GameObject.FindWithTag("GameManager").GetComponent<AreAllEnemiesDead>();
     }
 
     public void HurtEnemy(int damage)
@@ -38,7 +40,7 @@ public class Enemy : MonoBehaviour
 
             explosionParticle.transform.parent = null;
             explosionParticle.Play();
-            //areEnemiseDead.DestroyedCondition(gameObject);
+            areAllEnemiesDead.DestroyedCondition(gameObject);
             gameObject.SetActive(false);
             return true;
         }

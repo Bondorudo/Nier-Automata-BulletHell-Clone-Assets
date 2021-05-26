@@ -5,12 +5,10 @@ using UnityEngine;
 public class EnemySideScroll : Enemy
 {
     private Rigidbody rb;
+    private FireBullets fireBullets;
 
     [SerializeField] private float leftWall = 7;
-    [SerializeField] private float timeBetweenShots = 1;
-    public bool hasEnteredFight;
-    public bool test;
-    private FireBullets fireBullets;
+    private bool hasEnteredFight;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +18,7 @@ public class EnemySideScroll : Enemy
         SetCurrentHealth();
         StartCoroutine(Shooting());
     }
+
 
     private void FixedUpdate()
     {
@@ -52,7 +51,7 @@ public class EnemySideScroll : Enemy
             while (hasEnteredFight == true)
             {
                 fireBullets.Fire();
-                yield return new WaitForSeconds(timeBetweenShots);
+                yield return new WaitForSeconds(fireBullets.fireRate);
             }
             yield return new WaitForSeconds(0.1f);
         }

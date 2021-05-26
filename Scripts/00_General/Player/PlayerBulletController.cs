@@ -38,6 +38,12 @@ public class PlayerBulletController : MonoBehaviour
             collision.gameObject.GetComponent<EnemyManager>().HurtEnemy(damageToGive);
             Destroy(gameObject);
         }
+        if (collision.gameObject.tag == "SideScrollEnemy")
+        {
+            collision.gameObject.GetComponent<EnemySideScroll>().HurtEnemy(damageToGive);
+            Destroy(gameObject);
+        }
+
         // If Player Bullet and Orange Enemy Bullet collide destroy both bullets
         if (collision.gameObject.tag == "Orange")
         {

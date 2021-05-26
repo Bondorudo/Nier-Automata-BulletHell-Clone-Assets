@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DoubleSpiral : MonoBehaviour
 {
+    /*
     private float angle = 0f;
 
     // Start is called before the first frame update
@@ -36,4 +37,5 @@ public class DoubleSpiral : MonoBehaviour
             angle = 0f;
         }
     }
+    */
 }
