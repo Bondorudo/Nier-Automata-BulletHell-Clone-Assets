@@ -96,7 +96,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6d12c845ee6b52848954939111ee2049, type: 2}
+  - {fileID: 2100000, guid: c09da8bbdd56c194ab6ef21793653b85, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -187,7 +187,7 @@ MonoBehaviour:
   pooledOrangeBullet: {fileID: 4829330669069298905, guid: 9f39e7b38e78dd744860e8f9fa62f0ee,
     type: 3}
   bulletType: 1
-  fireRate: 0.3
+  fireRate: 0.6
   bulletsAmount: 0
   bulletDamage: 1
   bulletSpeed: 15

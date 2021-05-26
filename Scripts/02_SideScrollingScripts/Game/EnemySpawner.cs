@@ -34,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
             yPos = enemyYposArray[enemiesInWave - 1][yPosIndex];
 
             // new Vector3 for spawn position
-            Vector3 spawn = new Vector3(15, yPos, -1);
+            Vector3 spawn = new Vector3(15, yPos, 0);
             Instantiate(RandomEnemy(), spawn, RandomEnemy().transform.rotation);
 
             yPosIndex++;
