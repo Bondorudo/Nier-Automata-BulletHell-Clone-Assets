@@ -11,7 +11,7 @@ public class EnemyBulletController : MonoBehaviour
 
     private void OnEnable()
     {
-        Invoke("DisableBullet", 40f);
+        Invoke("DisableBullet", 0.5f);
     }
 
     void Update()

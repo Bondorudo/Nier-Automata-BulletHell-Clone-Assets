@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public int damage;
 
     public int maxHealth;
-    public int currentHealth;
+    private int currentHealth;
 
     public int moveSpeed;
 
@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
         EnemyDeath();
     }
 
-    public void EnemyDeath()
+    public bool EnemyDeath()
     {
         //Destroy enemy object when its health is 0
         if (currentHealth <= 0)
@@ -40,11 +40,19 @@ public class Enemy : MonoBehaviour
             explosionParticle.Play();
             //areEnemiseDead.DestroyedCondition(gameObject);
             gameObject.SetActive(false);
+            return true;
         }
+        else return false;
     }
 
     public int CurrentHealth()
     {
+        return currentHealth;
+    }
+
+    public int SetCurrentHealth()
+    {
+        currentHealth = maxHealth;
         return currentHealth;
     }
 

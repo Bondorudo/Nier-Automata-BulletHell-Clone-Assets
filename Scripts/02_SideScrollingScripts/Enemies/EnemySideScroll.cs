@@ -7,21 +7,18 @@ public class EnemySideScroll : Enemy
     private Rigidbody rb;
 
     [SerializeField] private float leftWall = 7;
-    private bool hasEnteredFight;
+    [SerializeField] private float timeBetweenShots = 1;
+    public bool hasEnteredFight;
+    public bool test;
+    private FireBullets fireBullets;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (hasEnteredFight)
-        {
-            Shooting();
-        }
+        fireBullets = GetComponent<FireBullets>();
+        SetCurrentHealth();
+        StartCoroutine(Shooting());
     }
 
     private void FixedUpdate()
@@ -48,8 +45,16 @@ public class EnemySideScroll : Enemy
         rb.velocity = Vector3.zero;
     }
 
-    private void Shooting()
+    IEnumerator Shooting()
     {
-
+        while (this.isActiveAndEnabled)
+        {
+            while (hasEnteredFight == true)
+            {
+                fireBullets.Fire();
+                yield return new WaitForSeconds(timeBetweenShots);
+            }
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }
