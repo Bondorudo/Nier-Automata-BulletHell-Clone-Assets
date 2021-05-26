@@ -41,7 +41,8 @@ public class Enemy : MonoBehaviour
             explosionParticle.transform.parent = null;
             explosionParticle.Play();
             areAllEnemiesDead.DestroyedCondition(gameObject);
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            Destroy(gameObject);
             return true;
         }
         else return false;

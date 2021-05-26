@@ -31,6 +31,7 @@ public class SideScrollingGameManager : MonoBehaviour
 
         if (areAllEnemiesDead.listOfEnemies.Count == 0 && enemiesKilled >= enemiesToBeKilled)
         {
+            gm.Victory();
             // TODO: SPAWN BOSS
         }
 

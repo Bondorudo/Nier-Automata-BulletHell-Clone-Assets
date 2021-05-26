@@ -12,7 +12,6 @@ public class AreAllEnemiesDead : MonoBehaviour
     {
         enemiesKilled = 0;
         listOfEnemies.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
-        listOfEnemies.AddRange(GameObject.FindGameObjectsWithTag("SideScrollEnemy"));
         listOfEnemies.AddRange(GameObject.FindGameObjectsWithTag("BreakableWall"));
     }
 
