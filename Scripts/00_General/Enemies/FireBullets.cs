@@ -16,8 +16,8 @@ public class FireBullets : MonoBehaviour
     [SerializeField] private float endAngleA = 225f;
 
     [Header("BULLETS")]
-    [SerializeField] private GameObject pooledPurpleBullet;
-    [SerializeField] private GameObject pooledOrangeBullet;
+    [SerializeField] private GameObject BulletNonBreakable;
+    [SerializeField] private GameObject BulletBreakable;
     private GameObject bul;
     private List<GameObject> bullets;
     private int result = 0;
@@ -68,22 +68,22 @@ public class FireBullets : MonoBehaviour
         if (bulletType == BulletType.PURPLE)
         {
             // Instantiate purple
-            bul = Instantiate(pooledPurpleBullet, firePoint);
+            bul = Instantiate(BulletNonBreakable, firePoint);
         }
         else if (bulletType == BulletType.ORANGE)
         {
             // Instantiate orange
-            bul = Instantiate(pooledOrangeBullet, firePoint);
+            bul = Instantiate(BulletBreakable, firePoint);
         }
         if (bulletType == BulletType.ALTERNATE && bullets.Count % bulletAlternate == result)
         {
             // Instantiate orange and purple
-            bul = Instantiate(pooledPurpleBullet, firePoint);
+            bul = Instantiate(BulletNonBreakable, firePoint);
         }
         else if (bulletType == BulletType.ALTERNATE && bullets.Count % bulletAlternate != result)
         {
             // Instantiate orange and purple
-            bul = Instantiate(pooledOrangeBullet, firePoint);
+            bul = Instantiate(BulletBreakable, firePoint);
         }
         bullets.Add(bul);
         return bul;

@@ -126,6 +126,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0106c82072f79db4184b104ccfafe64c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iFrameCounter: 0.1
   bulletSpeed: 25
   damageToGive: 1

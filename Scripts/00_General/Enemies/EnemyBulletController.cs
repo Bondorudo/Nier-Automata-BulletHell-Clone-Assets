@@ -38,7 +38,7 @@ public class EnemyBulletController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // If Bullet hits walls destroy it
-        if (collision.gameObject.layer == 10 || collision.gameObject.tag == "PlayerBullet" && gameObject.tag == "Orange" && iFrameCounter >= iFrames)
+        if (collision.gameObject.layer == 10)
         {
             Destroy(gameObject);
         }
@@ -48,15 +48,24 @@ public class EnemyBulletController : MonoBehaviour
             collision.gameObject.GetComponent<PlayerHealthManager>().HurtPlayer(damageToGive);
             Destroy(gameObject);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "PlayerBullet" && gameObject.tag == "Orange" && iFrameCounter >= iFrames)
+        {
+            Destroy(gameObject);
+        }
 
         // If Player Bullet and Orange Enemy Bullet collide destroy both bullets
-        if (collision.gameObject.tag == "PlayerBullet" && gameObject.tag == "Orange" && iFrameCounter <= iFrames)
+        if (other.gameObject.tag == "PlayerBullet" && gameObject.tag == "Orange" && iFrameCounter <= iFrames)
         {
             audioManager.BulletCollisionAudio();
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
             Destroy(gameObject);
         }
     }
+
 
     public void SetMoveDirection(Vector2 dir)
     {

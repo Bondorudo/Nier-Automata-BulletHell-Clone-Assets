@@ -274,12 +274,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_SideScroller
       objectReference: {fileID: 0}
-    - target: {fileID: 1050501823806733437, guid: dbf52b732c92d104e8cebad07fb4686b,
+    - target: {fileID: 7665517830070951796, guid: dbf52b732c92d104e8cebad07fb4686b,
         type: 3}
-      propertyPath: explosionParticle
-      value: 
-      objectReference: {fileID: 6330265943225563605, guid: 9fdc914ba13589143b7a2bf578c37141,
-        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbf52b732c92d104e8cebad07fb4686b, type: 3}
 --- !u!1 &144565422 stripped

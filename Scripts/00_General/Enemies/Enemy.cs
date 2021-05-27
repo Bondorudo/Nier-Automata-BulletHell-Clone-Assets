@@ -50,12 +50,12 @@ public class Enemy : MonoBehaviour
         //Destroy enemy object when its health is 0
         if (currentHealth <= 0)
         {
+            Debug.Log("Enemy Died");
             audioManager.EnemyDeathAudio();
 
             explosionParticle.transform.parent = null;
             explosionParticle.Play();
             areAllEnemiesDead.DestroyedCondition(gameObject);
-            //gameObject.SetActive(false);
             Destroy(gameObject);
             return true;
         }
