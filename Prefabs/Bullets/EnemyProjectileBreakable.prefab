@@ -129,3 +129,4 @@ MonoBehaviour:
   speed: 5
   damageToGive: 0
   iFrameCounter: 0.1
+  gameType: 1
