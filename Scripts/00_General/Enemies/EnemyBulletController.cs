@@ -7,6 +7,11 @@ public class EnemyBulletController : MonoBehaviour
     [HideInInspector] public float speed;
     [HideInInspector] public int damageToGive;
 
+    public float iFrameCounter;
+    private float iFrames = 0f;
+
+    private AudioManager audioManager;
+
     private Vector2 moveDirection;
 
     private void OnEnable()
@@ -14,16 +19,26 @@ public class EnemyBulletController : MonoBehaviour
         Invoke("DisableBullet", 10f);
     }
 
+    private void Start()
+    {
+        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
+    }
+
     void Update()
     {
         transform.Translate(moveDirection * speed * Time.deltaTime);
+
+        if (iFrameCounter >= iFrames)
+        {
+            iFrameCounter -= Time.deltaTime;
+        }
     }
 
     // Enemy Bullets
     private void OnCollisionEnter(Collision collision)
     {
         // If Bullet hits walls destroy it
-        if (collision.gameObject.layer == 10)
+        if (collision.gameObject.layer == 10 || collision.gameObject.tag == "PlayerBullet" && gameObject.tag == "Orange" && iFrameCounter >= iFrames)
         {
             Destroy(gameObject);
         }
@@ -31,6 +46,14 @@ public class EnemyBulletController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerHealthManager>().HurtPlayer(damageToGive);
+            Destroy(gameObject);
+        }
+
+        // If Player Bullet and Orange Enemy Bullet collide destroy both bullets
+        if (collision.gameObject.tag == "PlayerBullet" && gameObject.tag == "Orange" && iFrameCounter <= iFrames)
+        {
+            audioManager.BulletCollisionAudio();
+            Destroy(collision.gameObject);
             Destroy(gameObject);
         }
     }

@@ -164,6 +164,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   damage: 10
   maxHealth: 5
+  iFrameCounter: 0.3
   moveSpeed: 5
   leftWall: 7
 --- !u!114 &7780508301979566803

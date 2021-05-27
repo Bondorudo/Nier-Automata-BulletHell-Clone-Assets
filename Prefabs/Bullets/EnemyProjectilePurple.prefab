@@ -128,4 +128,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   damageToGive: 0
-  moveDirection: {x: 0, y: 0}
+  iFrameCounter: 0.1

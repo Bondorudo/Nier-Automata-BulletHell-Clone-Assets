@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SideScrollingGameManager : MonoBehaviour
 {
+    public TextMeshProUGUI enemiesKilledText;
     private GameManager gm;
     private EnemySpawner enemySpawner;
     private AreAllEnemiesDead areAllEnemiesDead;
@@ -27,6 +29,11 @@ public class SideScrollingGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (enemiesKilled > enemiesToBeKilled)
+        {
+            enemiesKilled = enemiesToBeKilled;
+        }
+        enemiesKilledText.text = "Enemies Killed " + enemiesKilled + "/" + enemiesToBeKilled;
         enemiesKilled = areAllEnemiesDead.enemiesKilled;
 
         if (areAllEnemiesDead.listOfEnemies.Count == 0 && enemiesKilled >= enemiesToBeKilled)

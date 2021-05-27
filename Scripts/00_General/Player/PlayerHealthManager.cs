@@ -12,7 +12,6 @@ public class PlayerHealthManager : MonoBehaviour
 
     public float flashLength;
     private float flashCounter;
-    private float iFrameCounter;
 
     private int wallDamage = 1;
     private int startingHealth = 3;
@@ -31,7 +30,6 @@ public class PlayerHealthManager : MonoBehaviour
         storedColor = rend.material.GetColor("_Color");
         transform.Find("Health_1").gameObject.SetActive(true);
         transform.Find("Health_2").gameObject.SetActive(true);
-        iFrameCounter = flashLength;
     }
     
     void Update()
@@ -64,11 +62,6 @@ public class PlayerHealthManager : MonoBehaviour
                 rend.material.SetColor("_Color", storedColor);
             }
         }
-        // Decrease iFrame counter
-        if (iFrameCounter > 0)
-        {
-            iFrameCounter -= Time.deltaTime;
-        }
     }
 
     // When player is hurt they lose health and their color turns red
@@ -81,9 +74,7 @@ public class PlayerHealthManager : MonoBehaviour
             currentHealth -= damageAmount;
             rend.material.SetColor("_Color", Color.red);
             flashCounter = flashLength;
-            iFrameCounter = flashLength;
         }
-        
     }
 
     // Decrease Health when colliding with damaging walls and enemies

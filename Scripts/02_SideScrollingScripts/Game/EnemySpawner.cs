@@ -10,9 +10,8 @@ public class EnemySpawner : MonoBehaviour
     
     int yPosIndex;
     int yPos;
-    private int enemyIndex;
-    [Range(1,3)]
-    public int enemiesInWave;
+    int enemyIndex;
+    int enemiesInWave;
 
 
     private void Start()
@@ -26,6 +25,7 @@ public class EnemySpawner : MonoBehaviour
     public void SpawnEnemyWave()
     {
         yPosIndex = 0;
+        enemiesInWave = Random.Range(1, 4);
 
         // Loop trought enemies in wave and spawn an enemy for every enemy in wave
         for (int i = 0; i < enemiesInWave; i++)
@@ -38,8 +38,6 @@ public class EnemySpawner : MonoBehaviour
             Instantiate(RandomEnemy(), spawn, RandomEnemy().transform.rotation);
 
             yPosIndex++;
-
-            Debug.Log(enemyIndex + " " + enemyPrefabs[enemyIndex].name);
         }
     }
 

@@ -13,6 +13,9 @@ public class Enemy : MonoBehaviour
     public int maxHealth;
     private int currentHealth;
 
+    public float iFrameCounter;
+    private float iFrames = 0f;
+
     public int moveSpeed;
 
     private bool isTouchingWall;
@@ -24,11 +27,22 @@ public class Enemy : MonoBehaviour
         areAllEnemiesDead = GameObject.FindWithTag("GameManager").GetComponent<AreAllEnemiesDead>();
     }
 
+    private void Update()
+    {
+        if (iFrameCounter >= iFrames)
+        {
+            iFrameCounter -= Time.deltaTime;
+        }
+    }
+
     public void HurtEnemy(int damage)
     {
-        audioManager.EnemyDamageAudio();
-        currentHealth -= damage;
-        EnemyDeath();
+        if (iFrameCounter <= iFrames)
+        {
+            audioManager.EnemyDamageAudio();
+            currentHealth -= damage;
+            EnemyDeath();
+        }
     }
 
     public bool EnemyDeath()

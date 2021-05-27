@@ -4,17 +4,10 @@ using UnityEngine;
 
 public class PlayerBulletController : MonoBehaviour
 {
-    private AudioManager audioManager;
-
     private float destroyBullet = 4;
-
     public float bulletSpeed;
     public int damageToGive;
 
-    private void Start()
-    {
-        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
-    }
 
     // Update is called once per frame
     void Update()
@@ -41,14 +34,6 @@ public class PlayerBulletController : MonoBehaviour
         if (collision.gameObject.tag == "SideScrollEnemy")
         {
             collision.gameObject.GetComponent<EnemySideScroll>().HurtEnemy(damageToGive);
-            Destroy(gameObject);
-        }
-
-        // If Player Bullet and Orange Enemy Bullet collide destroy both bullets
-        if (collision.gameObject.tag == "Orange")
-        {
-            audioManager.BulletCollisionAudio();
-            Destroy(collision.gameObject);
             Destroy(gameObject);
         }
     }
