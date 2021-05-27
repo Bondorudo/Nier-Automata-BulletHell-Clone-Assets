@@ -8,22 +8,31 @@ using UnityEngine.SceneManagement;
 
 public class UI_Script : MonoBehaviour
 {
-    public TextMeshProUGUI pauseText;
+    // References to UI elements
+    [Header("Menu Buttons")]
     public Button nextLevelButton;
     public Button continueButton;
     public Button restartButton;
     public Button quitButton;
+
+    [Header("Menu Text")]
+    public TextMeshProUGUI pauseText;
     public TextMeshProUGUI loseText;
     public TextMeshProUGUI winText;
 
+    [Header("UI Text")]
     public TextMeshProUGUI enemiesKilledText;
     public TextMeshProUGUI scoreText;
+
+    private AudioManager audioManager;
 
     private int nextLevelToLoad;
     private int sceneCount;
 
-    private void Start()
+
+    void Start()
     {
+        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
         nextLevelToLoad = SceneManager.GetActiveScene().buildIndex + 1;
         sceneCount = SceneManager.sceneCountInBuildSettings;
     }
@@ -59,11 +68,13 @@ public class UI_Script : MonoBehaviour
 
     public void RestartButton()
     {
+        audioManager.ButtonPressAudio();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void NextLevelButton()
     {
+        audioManager.ButtonPressAudio();
         if (nextLevelToLoad < sceneCount)
         {
             SceneManager.LoadScene(nextLevelToLoad);
@@ -76,7 +87,7 @@ public class UI_Script : MonoBehaviour
 
     public void QuitToMenu()
     {
+        audioManager.ButtonPressAudio();
         SceneManager.LoadScene("MainMenu");
     }
-
 }

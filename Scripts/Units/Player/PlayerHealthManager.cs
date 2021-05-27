@@ -6,7 +6,6 @@ public class PlayerHealthManager : MonoBehaviour
 {
     private Renderer rend;
     private GameManager gameManager;
-    private PlayerController player;
     private AudioManager audioManager;
     [SerializeField] private ParticleSystem explosionParticle;
 
@@ -22,12 +21,12 @@ public class PlayerHealthManager : MonoBehaviour
 
     void Start()
     {
+        // Get a reference to components, set currentHealth to startingHealth, set player hp indicators active.
         gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
-        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        currentHealth = startingHealth;
         rend = GetComponentInChildren<Renderer>();
         storedColor = rend.material.GetColor("_Color");
+        currentHealth = startingHealth;
         transform.Find("Health_1").gameObject.SetActive(true);
         transform.Find("Health_2").gameObject.SetActive(true);
     }
@@ -42,9 +41,9 @@ public class PlayerHealthManager : MonoBehaviour
             explosionParticle.transform.parent = null;
             if (!explosionParticle.isPlaying) explosionParticle.Play();
             gameManager.GameOver();
-
         }
 
+        // Deactivate hp indicators based on player hp
         if (currentHealth == 2)
         {
             transform.Find("Health_2").gameObject.SetActive(false);
@@ -53,6 +52,7 @@ public class PlayerHealthManager : MonoBehaviour
         {
             transform.Find("Health_1").gameObject.SetActive(false);
         }
+
         // Player color is restored to normal
         if (flashCounter > 0)
         {

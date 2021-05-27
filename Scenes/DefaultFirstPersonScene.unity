@@ -1498,12 +1498,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 398935025}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &426630033 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5815733161089918078, guid: 0b725a43689b01d4697619196cd5b190,
-    type: 3}
-  m_PrefabInstance: {fileID: 1304012737113302896}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &433187832 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3647729483030303587, guid: 2cfa8030aa55c7945b015fc8d5c08df9,
@@ -1556,7 +1550,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57efcdc85de225c47b6be2f8dd4a1c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 426630033}
   isGameOver: 0
 --- !u!114 &442910222
 MonoBehaviour:
@@ -1570,11 +1563,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3779d9f9ec336f459f74ecfeebc0f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseText: {fileID: 1379477378}
   nextLevelButton: {fileID: 1379477377}
   continueButton: {fileID: 1379477376}
   restartButton: {fileID: 1379477375}
   quitButton: {fileID: 1379477374}
+  pauseText: {fileID: 1379477378}
   loseText: {fileID: 1379477373}
   winText: {fileID: 1379477372}
   enemiesKilledText: {fileID: 0}

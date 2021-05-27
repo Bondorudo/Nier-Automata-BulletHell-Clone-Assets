@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.SceneManagement;
 
-public class MainMenuManager : MonoBehaviour
+public class Menu_Script : MonoBehaviour
 {
-    private AudioManager audioManager;
     public GameObject mainMenu;
     public GameObject levelMenu;
 
+    private AudioManager audioManager;
 
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
         audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
     }

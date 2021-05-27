@@ -5,7 +5,6 @@ using UnityEngine;
 public class LevelHeart : MonoBehaviour
 {
     private EnemyManager enemyManager;
-    private PlayerController thePlayer;
 
     private Renderer rend;
 
@@ -15,7 +14,6 @@ public class LevelHeart : MonoBehaviour
     void Start()
     {
         enemyManager = GetComponent<EnemyManager>();
-        thePlayer = FindObjectOfType<PlayerController>();
         rend = GetComponent<Renderer>();
         storedColor = rend.material.GetColor("_Color");
         enemyManager.canTakeDamage = false;

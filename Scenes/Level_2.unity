@@ -1316,11 +1316,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3779d9f9ec336f459f74ecfeebc0f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseText: {fileID: 127646996}
   nextLevelButton: {fileID: 1678692338}
   continueButton: {fileID: 878864283}
   restartButton: {fileID: 699578326}
   quitButton: {fileID: 883886283}
+  pauseText: {fileID: 127646996}
   loseText: {fileID: 1745070463}
   winText: {fileID: 895405748}
   enemiesKilledText: {fileID: 0}

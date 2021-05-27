@@ -11,6 +11,7 @@ public class PlayerSideScrollerController : MonoBehaviour
 
     void Start()
     {
+        // Get a reference to components
         rb = GetComponent<Rigidbody>();
     }
 

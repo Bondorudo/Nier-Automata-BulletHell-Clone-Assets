@@ -1081,11 +1081,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3779d9f9ec336f459f74ecfeebc0f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseText: {fileID: 765828048}
   nextLevelButton: {fileID: 765828047}
   continueButton: {fileID: 765828046}
   restartButton: {fileID: 765828045}
   quitButton: {fileID: 765828044}
+  pauseText: {fileID: 765828048}
   loseText: {fileID: 765828043}
   winText: {fileID: 765828042}
   enemiesKilledText: {fileID: 0}

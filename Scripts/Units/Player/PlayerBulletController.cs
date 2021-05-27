@@ -17,7 +17,6 @@ public class PlayerBulletController : MonoBehaviour
         Destroy(gameObject, destroyBullet);
     }
 
-    // Player Bullets
     private void OnTriggerEnter(Collider collision)
     {
         // If Bullet hits walls or shields destroy it
@@ -25,12 +24,13 @@ public class PlayerBulletController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        // If Player Bullet and Enemy collide deal damage to enemy and destroy bullet
+        // If Bullet and Enemy collide deal damage to enemy and destroy bullet
         if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "BreakableWall" || collision.gameObject.tag == "WinCondition")
         {
             collision.gameObject.GetComponent<EnemyManager>().HurtEnemy(damageToGive);
             Destroy(gameObject);
         }
+        // If Bullet and SideScroll Enemy collide deal damage and destroy bullet
         if (collision.gameObject.tag == "SideScrollEnemy")
         {
             collision.gameObject.GetComponent<EnemySideScroll>().HurtEnemy(damageToGive);

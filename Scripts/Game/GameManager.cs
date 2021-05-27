@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     private GameObject player;
     private AudioManager audioManager;
     private UI_Script uiScript;
-    private EnemyBulletController enemyBullet;
 
     private float score;
     private float scoreToShow;
